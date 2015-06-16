@@ -8,7 +8,7 @@ var board = '090000006\n' +
             '706000810\n' +
             '300090000';
 
-/* ***********************************
+/*************************************
 
 split the board into new lines
 and use map to split each row
@@ -16,7 +16,7 @@ into an array of characters,
 then use map to convert the characters 
 to integers
 
- ************************************/
+*************************************/
 
 parseBoard = function(board) {
   return board.split('\n').map(function(row) {
@@ -26,12 +26,12 @@ parseBoard = function(board) {
   });
 };
 
-/* ***********************************
+/*************************************
 
 look for any value of zero and save 
 it to an array.
 
- ************************************/
+*************************************/
 
 saveEmptySquares = function(board) {
   //create an empty array to hold the positions
@@ -48,6 +48,18 @@ saveEmptySquares = function(board) {
   }
   //return the positions
   return emptySquares;
+};
+
+checkRow = function(board, row, value) {
+  // Iterate through every value in the row
+  for(var i = 0; i < board[row].length; i++) {
+    // If a match is found, return false
+    if(board[row][i] === value) {
+      return false;
+    }
+  }
+  // If no match was found, return true
+  return true;
 };
 
 //iterate through each column checking for zero
@@ -68,7 +80,7 @@ checkColumn = function(board, column, value) {
 figure out the bounds of the 3x3 square
 and test each of it's values
 
- ************************************/
+*************************************/
 
 check3Square = function(board, column, row, value) {
   //save upper left corner
@@ -100,6 +112,23 @@ check3Square = function(board, column, row, value) {
     return true;
 }
 
+/*************************************
+
+combine checkRow, checkColumn, and 
+check3Square to see if a value is
+valid for a given position
+
+*************************************/
+
+checkValue = function(board, column, row, value) {
+  if(this.checkRow(board, row, value) &&
+    this.checkColumn(board, column, value) &&
+    this.check3x3Square(board, column, row, value)) {
+    return true;
+  } else {
+    return false;
+  }
+};
 
 
 
