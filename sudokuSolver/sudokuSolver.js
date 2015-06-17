@@ -87,7 +87,7 @@ and test each of it's values
 check3Square = function(board, column, row, value) {
   //save upper left corner
   var columnCorner = 0,
-    row corner = 0,
+    rowCorner = 0,
     squareSize = 3;
 
     //find the left-most column
