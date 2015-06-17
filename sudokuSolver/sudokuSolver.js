@@ -1,3 +1,5 @@
+//test pattern to make sure my code does what I think it does
+
 var board = '090000006\n' + 
             '000960485\n' +
             '000581000\n' +
@@ -129,6 +131,68 @@ checkValue = function(board, column, row, value) {
     return false;
   }
 };
+
+/*************************************
+
+code to solve the test puzzle
+
+*************************************/
+
+solvePuzzle = function(board, emptySquares) {
+  //variable to track our position in the solver
+  var limit = 9, row, column, value, found;
+  for(i = 0; i < emptySquares.length;) {
+    row = emptySquares[i][0];
+    column = emptySquares[i][1];
+    //try next value
+    value = board[row][column] + 1;
+    //find something?
+    found = false;
+    /* keep trying new values untile either the limit 
+    is reached or we actually find a valid value */
+    while(!found && value <= limit) {
+      /* if a valid value is found, mark found as true,
+      set the position to the value, and move to the next spot */
+      if(this.checkValue(board, column, row, value)) {
+        found = true;
+        board[row][column] = value;
+        i++;
+      } else {
+        value++;
+      }
+    }
+    /* if no valid value is found and the limit
+    is reached, move back to the previous position */
+    if(!found) {
+      board[row][column] = 0;
+      i--;
+    }
+  }
+  //if solution is found, log it!
+  board.forEach(function(row) {
+    console.log(row.join());
+  });
+  return board;
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
