@@ -10,7 +10,7 @@ to integers
 
 *************************************/
 
-parseBoard = function(board) {
+module.exports.parseBoard = function(board) {
   return board.split('\n').map(function(row) {
     return row.split('').map(function(num) {
       return +num;
@@ -25,7 +25,7 @@ it to an array.
 
 *************************************/
 
-saveEmptySquares = function(board) {
+module.exports.saveEmptySquares = function(board) {
   //create an empty array to hold the positions
   var emptySquares = [];
 
@@ -42,7 +42,7 @@ saveEmptySquares = function(board) {
   return emptySquares;
 };
 
-checkRow = function(board, row, value) {
+module.exports.checkRow = function(board, row, value) {
   // Iterate through every value in the row
   for(var i = 0; i < board[row].length; i++) {
     // If a match is found, return false
@@ -55,7 +55,7 @@ checkRow = function(board, row, value) {
 };
 
 //iterate through each column checking for zero
-checkColumn = function(board, column, value) {
+module.exports.checkColumn = function(board, column, value) {
   for (var i = 0; i < board.length; i++) {
 
     //if a match is found, return false
@@ -74,7 +74,7 @@ and test each of it's values
 
 *************************************/
 
-check3Square = function(board, column, row, value) {
+module.exports.check3Square = function(board, column, row, value) {
   //save upper left corner
   var columnCorner = 0,
     rowCorner = 0,
@@ -112,7 +112,7 @@ valid for a given position
 
 *************************************/
 
-checkValue = function(board, column, row, value) {
+module.exports.checkValue = function(board, column, row, value) {
   if(this.checkRow(board, row, value) &&
     this.checkColumn(board, column, value) &&
     this.check3x3Square(board, column, row, value)) {
@@ -128,7 +128,7 @@ code to solve the test puzzle
 
 *************************************/
 
-solvePuzzle = function(board, emptySquares) {
+module.exports.solvePuzzle = function(board, emptySquares) {
   //variable to track our position in the solver
   var limit = 9, row, column, value, found;
   for(i = 0; i < emptySquares.length;) {
@@ -145,7 +145,7 @@ solvePuzzle = function(board, emptySquares) {
       set the position to the value, and move to the next spot */
       if(this.checkValue(board, column, row, value)) {
         found = true;
-        board[row][column] = value;
+        board[rvow][column] = value;
         i++;
       } else {
         value++;
@@ -165,7 +165,7 @@ solvePuzzle = function(board, emptySquares) {
   return board;
 };
 
-solveSudoku = function(board) {
+module.exports.solveSudoku = function(board) {
   var parsedBoard = this.parseBoard(board);
   var emptyPositions = this.saveEmptySquares(parsedBoard);
 
