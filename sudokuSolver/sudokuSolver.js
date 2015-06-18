@@ -1,14 +1,4 @@
-//test pattern to make sure my code does what I think it does
 
-var board = '090000006\n' + 
-            '000960485\n' +
-            '000581000\n' +
-            '004000000\n' +
-            '517200900\n' +
-            '602000370\n' +
-            '100804020\n' +
-            '706000810\n' +
-            '300090000';
 
 /*************************************
 
@@ -173,6 +163,13 @@ solvePuzzle = function(board, emptySquares) {
     console.log(row.join());
   });
   return board;
+};
+
+solveSudoku = function(board) {
+  var parsedBoard = this.parseBoard(board);
+  var emptyPositions = this.saveEmptySquares(parsedBoard);
+
+  return this.solvePuzzle(parsedBoard, emptySquares);
 };
 
 
