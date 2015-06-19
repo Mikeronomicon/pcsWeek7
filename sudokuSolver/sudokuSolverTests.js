@@ -4,6 +4,7 @@ var Chai = require('chai'),
 
 //test pattern to make sure my code does what I think it does
 
+describe('Sudoku Solver', function() {
 var board = '090000006\n' + 
             '000960485\n' +
             '000581000\n' +
@@ -76,11 +77,11 @@ describe('#checkColumn()', function() {
 describe('#check3Square()', function() {
   it('should check that each value in a 3x3 square does not match the input', function() {
     // No match. Return true
-    expect(solver.check3x3Square(parsedBoard, 2, 2, 1)).to.be.ok;
-    expect(solver.check3x3Square(parsedBoard, 7, 7, 9)).to.be.ok;
+    expect(solver.check3Square(parsedBoard, 2, 2, 1)).to.be.ok;
+    expect(solver.check3Square(parsedBoard, 7, 7, 9)).to.be.ok;
     // Match found. Return false
-    expect(solver.check3x3Square(parsedBoard, 2, 2, 9)).to.not.be.ok;
-    expect(solver.check3x3Square(parsedBoard, 7, 7, 1)).to.not.be.ok;
+    expect(solver.check3Square(parsedBoard, 2, 2, 9)).to.not.be.ok;
+    expect(solver.check3Square(parsedBoard, 7, 7, 1)).to.not.be.ok;
   });
 });
 
@@ -118,6 +119,6 @@ describe('#solveSudoku()', function() {
     var solution = solver.solveSudoku(board);
 
     expect(solution).to.eql(expectedSolution);
+    });
   });
 });
-

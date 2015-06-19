@@ -97,12 +97,12 @@ module.exports.check3Square = function(board, column, row, value) {
         //return false if a match is found
         if(board[i][j] === value) {
           return false;
-        }
-      }
-    }
+        };
+      };
+    };
     //if no match is found, return true
     return true;
-}
+};
 
 /*************************************
 
@@ -115,7 +115,7 @@ valid for a given position
 module.exports.checkValue = function(board, column, row, value) {
   if(this.checkRow(board, row, value) &&
     this.checkColumn(board, column, value) &&
-    this.check3x3Square(board, column, row, value)) {
+    this.check3Square(board, column, row, value)) {
     return true;
   } else {
     return false;
@@ -150,14 +150,14 @@ module.exports.solvePuzzle = function(board, emptySquares) {
       } else {
         value++;
       }
-    }
+    };
     /* if no valid value is found and the limit
     is reached, move back to the previous position */
     if(!found) {
       board[row][column] = 0;
       i--;
     }
-  }
+  };
   //if solution is found, log it!
   board.forEach(function(row) {
     console.log(row.join());
