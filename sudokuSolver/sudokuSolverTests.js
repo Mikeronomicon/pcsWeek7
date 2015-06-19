@@ -38,9 +38,9 @@ describe('#parseBoard()', function() {
   });
 });
 
-describe('#saveEmptyPositions()', function() {
+describe('#saveEmptySquares()', function() {
   it('should save all of the empty positions, 0s, in a parsed board', function() {
-    emptyPositions = solver.saveEmptyPositions(parsedBoard);
+    emptySquares = solver.saveEmptySquares(parsedBoard);
 
     var expectedPositions = [
       [0,0],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7],[1,0],[1,1],
@@ -51,8 +51,8 @@ describe('#saveEmptyPositions()', function() {
       [8,2],[8,3],[8,5],[8,6],[8,7],[8,8]
     ];
 
-    expect(emptyPositions.length).to.equal(51);
-    expect(emptyPositions).to.eql(expectedPositions);
+    expect(emptySquares.length).to.equal(51);
+    expect(emptySquares).to.eql(expectedPositions);
   });
 });
 

@@ -10,7 +10,7 @@ to integers
 
 *************************************/
 
-module.exports.parseBoard = function(board) {
+parseBoard = function(board) {
   return board.split('\n').map(function(row) {
     return row.split('').map(function(num) {
       return +num;
@@ -25,7 +25,7 @@ it to an array.
 
 *************************************/
 
-module.exports.saveEmptySquares = function(board) {
+saveEmptySquares = function(board) {
   //create an empty array to hold the positions
   var emptySquares = [];
 
@@ -36,13 +36,13 @@ module.exports.saveEmptySquares = function(board) {
       if(board[i][z] === 0) {
         emptySquares.push([i, z]);
       }
-    }
-  }
+    };
+  };
   //return the positions
   return emptySquares;
 };
 
-module.exports.checkRow = function(board, row, value) {
+checkRow = function(board, row, value) {
   // Iterate through every value in the row
   for(var i = 0; i < board[row].length; i++) {
     // If a match is found, return false
@@ -55,7 +55,7 @@ module.exports.checkRow = function(board, row, value) {
 };
 
 //iterate through each column checking for zero
-module.exports.checkColumn = function(board, column, value) {
+checkColumn = function(board, column, value) {
   for (var i = 0; i < board.length; i++) {
 
     //if a match is found, return false
@@ -74,7 +74,7 @@ and test each of it's values
 
 *************************************/
 
-module.exports.check3Square = function(board, column, row, value) {
+check3Square = function(board, column, row, value) {
   //save upper left corner
   var columnCorner = 0,
     rowCorner = 0,
@@ -112,7 +112,7 @@ valid for a given position
 
 *************************************/
 
-module.exports.checkValue = function(board, column, row, value) {
+checkValue = function(board, column, row, value) {
   if(this.checkRow(board, row, value) &&
     this.checkColumn(board, column, value) &&
     this.check3Square(board, column, row, value)) {
@@ -128,7 +128,7 @@ code to solve the test puzzle
 
 *************************************/
 
-module.exports.solvePuzzle = function(board, emptySquares) {
+solvePuzzle = function(board, emptySquares) {
   //variable to track our position in the solver
   var limit = 9, row, column, value, found;
   for(i = 0; i < emptySquares.length;) {
@@ -165,7 +165,7 @@ module.exports.solvePuzzle = function(board, emptySquares) {
   return board;
 };
 
-module.exports.solveSudoku = function(board) {
+solveSudoku = function(board) {
   var parsedBoard = this.parseBoard(board);
   var emptyPositions = this.saveEmptySquares(parsedBoard);
 
