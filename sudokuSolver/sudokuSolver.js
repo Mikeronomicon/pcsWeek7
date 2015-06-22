@@ -145,7 +145,7 @@ solvePuzzle = function(board, emptySquares) {
       set the position to the value, and move to the next spot */
       if(this.checkValue(board, column, row, value)) {
         found = true;
-        board[rvow][column] = value;
+        board[row][column] = value;
         i++;
       } else {
         value++;
