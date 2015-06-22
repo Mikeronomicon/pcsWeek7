@@ -171,25 +171,3 @@ solveSudoku = function(board) {
 
   return this.solvePuzzle(parsedBoard, emptySquares);
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
